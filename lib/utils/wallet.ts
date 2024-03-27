@@ -42,7 +42,7 @@ export async function getBalance(address: string) {
   }
 }
 
-export const Sendtransfer = async (to: string, from: string, key: string) => {
+export const Sendtransfer = async (to: string, value: string, from: string, key: string) => {
   const wallet = new ethers.Wallet(key, provider);
 
   const senderBalanceBefore = await provider.getBalance(from);
@@ -59,7 +59,7 @@ export const Sendtransfer = async (to: string, from: string, key: string) => {
 
   const tx = await wallet.sendTransaction({
     to: to,
-    value: ethers.utils.parseEther("0.0001"),
+    value: ethers.utils.parseEther(value),
   });
 
   await tx.wait();

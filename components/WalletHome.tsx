@@ -33,18 +33,7 @@ export const WalletHome = ({ wallet, setwallet }: any) => {
       <Navbar deleteWallet={deleteWallet} />
       {balance?.increase > 0 && <Text color={'green'}>+ {balance.increase.toFixed(5)} </Text>}
       {balance && <Text fontSize="6xl">{balance.balance.toFixed(4)} ETH</Text>}
-      <Menu />
-      <button
-        onClick={() =>
-          Sendtransfer(
-            "0x6894128dDd01706420516448505deF3873eafCc5",
-            wallet.address,
-            wallet.privateKey
-          )
-        }
-      >
-        Transfer
-      </button>
+      <Menu wallet={wallet}/>
     </Stack>
   );
 };
