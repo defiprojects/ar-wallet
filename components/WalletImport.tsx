@@ -1,4 +1,5 @@
 import { importWallet } from "@/lib/utils/wallet";
+import { Button, Heading, Input, Stack, Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 export const WalletImport = ({ setwallet }: any) => {
@@ -10,10 +11,12 @@ export const WalletImport = ({ setwallet }: any) => {
     });
   };
   return (
-    <div>
-      <h1>WalletImport</h1>
-      <input onChange={(e: any) => setmnemonic(e.target.value)} />
-      <button disabled={!mnemonic}onClick={importExistWallet}>Importar wallet</button>
-    </div>
+    <Stack h={"100vh"} w={"100%"} justify={"center"} align={"center"}>
+      <Heading>Import new account</Heading>
+      <Textarea placeholder="wink midnight foot swift chef lucky ceiling blind cream citizen dish..." onChange={(e: any) => setmnemonic(e.target.value)} />
+      <Button disabled={!mnemonic} onClick={importExistWallet}>
+        Import
+      </Button>
+    </Stack>
   );
 };

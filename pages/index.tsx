@@ -1,3 +1,4 @@
+import { Landing } from "@/components/Landing";
 import { WalletCreate } from "@/components/WalletCreate";
 import { WalletHome } from "@/components/WalletHome";
 import { WalletImport } from "@/components/WalletImport";
@@ -19,10 +20,5 @@ export default function Home() {
   if (wallet) {
     return <WalletHome setwallet={setwallet} wallet={wallet} />;
   }
-  return (
-    <div>
-      <WalletCreate setwallet={setwallet} />
-      <WalletImport setwallet={setwallet} />
-    </div>
-  );
+  return <Landing setwallet={setwallet}/>;
 }

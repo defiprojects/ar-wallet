@@ -1,3 +1,4 @@
+import { Button, Heading, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
 export const WalletConfirm = ({ setwallet, setconfirm, confirm }: any) => {
@@ -8,10 +9,13 @@ export const WalletConfirm = ({ setwallet, setconfirm, confirm }: any) => {
   };
 
   return (
-    <div>
-      <h1>Copia tu pharse seed</h1>
-      <p>{confirm?.mnemonic}</p>
-      <button onClick={confirmData}>Confirmar</button>
-    </div>
+    <Stack h={"100vh"} w={"100%"} justify={"center"} align={"center"}>
+      <Heading>Copy your pharse seed</Heading>
+      <Text>After Confirming you will no longer access this information</Text>
+      <Stack padding={2} background={'gray.600'} borderRadius={'15px'}>
+        <Text textAlign={'center'}> {confirm?.mnemonic}</Text>
+      </Stack>
+      <Button onClick={confirmData}>Confirmar</Button>
+    </Stack>
   );
 };
