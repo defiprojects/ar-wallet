@@ -4,6 +4,7 @@ const provider = new ethers.providers.JsonRpcProvider(
   `https://sepolia.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_RPC}`
 );
 
+
 export async function createWallet() {
   const wallet = Wallet.fromMnemonic(
     utils.entropyToMnemonic(utils.randomBytes(32))
