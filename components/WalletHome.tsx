@@ -5,7 +5,7 @@ import { Navbar } from "./ui/Navbar";
 import { Menu } from "./ui/Menu";
 
 export const WalletHome = ({ wallet, setwallet }: any) => {
-  const [balance, setbalance] = useState<any>();
+  const [balance, setbalance] = useState<any>({increase: 0, balance: Number(localStorage.getItem("eth_balance"))});
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -31,7 +31,7 @@ export const WalletHome = ({ wallet, setwallet }: any) => {
   return (
     <Stack h={"100vh"} w={"100%"} justify={"flex-start"} align={"center"}>
       <Navbar deleteWallet={deleteWallet} />
-      {balance.increase > 0 && <Text color={'green'}>+ {balance.increase.toFixed(5)} </Text>}
+      {balance?.increase > 0 && <Text color={'green'}>+ {balance.increase.toFixed(5)} </Text>}
       {balance && <Text fontSize="6xl">{balance.balance.toFixed(4)} ETH</Text>}
       <Menu />
       <button
