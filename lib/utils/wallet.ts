@@ -1,9 +1,8 @@
-import { Wallet, utils, ethers  } from "ethers";
+import { Wallet, utils, ethers } from "ethers";
 
 const provider = new ethers.providers.JsonRpcProvider(
   `https://sepolia.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_RPC}`
 );
-
 
 export async function createWallet() {
   const wallet = Wallet.fromMnemonic(
@@ -29,12 +28,14 @@ export async function importWallet(mnmonic: string) {
 
 export async function getBalance(address: string) {
   try {
-    // Obtener el saldo
-    const balance = await provider.getBalance(
-      address
-    );
-    // Convertir el saldo a ETH y devolverlo
-    return ethers.utils.formatEther(balance);
+    const befordBalance = Number(localStorage.getItem("eth_balance"));
+    const balance = await provider.getBalance(address);
+    localStorage.setItem("eth_balance", ethers.utils.formatEther(balance));
+    const afterBalance = Number(ethers.utils.formatEther(balance));
+    return {
+      balance: afterBalance,
+      increase: afterBalance - befordBalance,
+    };
   } catch (error) {
     console.error("Error al obtener el saldo:", error);
     return null;
@@ -42,7 +43,6 @@ export async function getBalance(address: string) {
 }
 
 export const Sendtransfer = async (to: string, from: string, key: string) => {
-
   const wallet = new ethers.Wallet(key, provider);
 
   const senderBalanceBefore = await provider.getBalance(from);
