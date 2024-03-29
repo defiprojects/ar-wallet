@@ -3,12 +3,13 @@ import { WalletConfirm } from "./WalletConfirm";
 import { createWallet } from "@/lib/utils/wallet";
 import { Button, Heading, Stack } from "@chakra-ui/react";
 
-export const WalletCreate = ({ setwallet }: any) => {
+export const WalletCreate = () => {
   const [confirm, setconfirm] = useState<any>();
+  
   if (confirm) {
     return (
       <WalletConfirm
-        setwallet={setwallet}
+ 
         setconfirm={setconfirm}
         confirm={confirm}
       />
