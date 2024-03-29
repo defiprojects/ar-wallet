@@ -1,23 +1,18 @@
 import { Landing } from "@/components/Landing";
 import { WalletHome } from "@/components/WalletHome";
 import { useWallet } from "@/context/WalletContext";
-import { useEffect, useState } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useEffect } from "react";
 
 export default function Home() {
-  const {wallet, setWallet} = useWallet();
+  const [walletStorage] = useLocalStorage("walletStorage", null);
+  const { setWallet, wallet } = useWallet();
 
   useEffect(() => {
-    let wallet = localStorage.getItem("walletStorage");
-    const walletObj = JSON.parse(wallet as string);
-
-    if (walletObj) {
-      setWallet(walletObj);
-      return;
+    if (walletStorage) {
+      setWallet(walletStorage);
     }
-  }, []);
+  }, [walletStorage]); 
 
-  if (wallet) {
-    return <WalletHome  />;
-  }
-  return <Landing />;
+  return wallet ? <WalletHome /> : <Landing />;
 }
