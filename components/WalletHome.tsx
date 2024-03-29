@@ -1,4 +1,4 @@
-import { Sendtransfer, getBalance } from "@/lib/utils/wallet";
+import { getBalance } from "@/lib/utils/wallet";
 import { Stack, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Navbar } from "./ui/Navbar";

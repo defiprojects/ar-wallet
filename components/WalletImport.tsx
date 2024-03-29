@@ -1,6 +1,6 @@
 import { useWallet } from "@/context/WalletContext";
 import { importWallet } from "@/lib/utils/wallet";
-import { Button, Heading, Input, Stack, Textarea } from "@chakra-ui/react";
+import { Button, Heading, Stack, Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 export const WalletImport = () => {
