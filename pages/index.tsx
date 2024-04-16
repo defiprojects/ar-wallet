@@ -5,7 +5,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useEffect } from "react";
 
 export default function Home() {
-  const [walletStorage] = useLocalStorage("walletStorage", null);
+  const [walletStorage] = useLocalStorage("walletStorage", {});
   const { setWallet, wallet } = useWallet();
 
   useEffect(() => {

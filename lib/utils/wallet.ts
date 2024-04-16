@@ -1,7 +1,7 @@
 import { Wallet, utils, ethers } from "ethers";
 
 const provider = new ethers.providers.JsonRpcProvider(
-  `https://sepolia.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_RPC}`
+  `https://rpc-testnet.morphl2.io`
 );
 
 export async function createWallet() {
