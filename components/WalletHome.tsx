@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { Navbar } from "./ui/Navbar";
 import { Menu } from "./ui/Menu";
 import { useWallet } from "@/context/WalletContext";
+import { Tokens } from "./Tokens";
 
 export const WalletHome = () => {
   const { wallet, setWallet, balance, setBalance } = useWallet();
@@ -41,6 +42,7 @@ export const WalletHome = () => {
       )}
       {balance && <Text fontSize="6xl">{balance?.balance?.toFixed(4)} ETH</Text>}
       <Menu  />
+      <Tokens />
     </Stack>
   );
 };

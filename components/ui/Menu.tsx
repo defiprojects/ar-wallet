@@ -13,6 +13,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Stack,
+  Text,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
@@ -125,6 +126,7 @@ const ReceiveModal = ({ onClose, isOpen }: any) => {
          <Center>
         <QRCodeSVG size={215} value={wallet?.address as string} />
           </Center> 
+        <Text fontSize='sm' textAlign={'center'} pt={5}>{wallet?.address}</Text>
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={onClose}>
