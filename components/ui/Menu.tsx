@@ -18,6 +18,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { QRCodeSVG } from "qrcode.react";
+import { CgArrowDown } from "react-icons/cg";
 
 import React, { useState } from "react";
 export const Menu = () => {
@@ -76,11 +77,12 @@ const SendModal = ({ onClose, isOpen }: any) => {
         <ModalHeader>Send to</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Stack>
+          <Stack align={'center'} gap={3}>
             <Input
               placeholder="Address 0x.."
               onChange={(e: any) => setaddress(e.target.value)}
             />
+            <CgArrowDown />
             <Input
               placeholder="Import ETH"
               onChange={(e: any) => setvalue(e.target.value)}

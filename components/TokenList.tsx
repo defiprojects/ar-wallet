@@ -3,8 +3,6 @@ import {
   Avatar,
   HStack,
   Skeleton,
-  SkeletonCircle,
-  SkeletonText,
   Stack,
   Text,
 } from "@chakra-ui/react";
