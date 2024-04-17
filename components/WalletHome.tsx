@@ -13,7 +13,7 @@ export const WalletHome = () => {
       try {
         const balanceInfo = await getBalance(wallet.address as string);
         if (balanceInfo) {
-          console.log(balanceInfo);
+     
           
           setBalance(balanceInfo);
         }

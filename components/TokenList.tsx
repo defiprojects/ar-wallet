@@ -1,12 +1,19 @@
 import { useWallet } from "@/context/WalletContext";
-import { Avatar, HStack, Stack, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  HStack,
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 export const TokenList = () => {
   const { balance } = useWallet();
 
   const [tokenPrices, setTokenPrices] = useState<any>({});
-
 
   useEffect(() => {
     const fetchTokenPrices = async () => {
@@ -16,7 +23,11 @@ export const TokenList = () => {
         );
         if (response.ok) {
           const data = await response.json();
-          setTokenPrices(data.data.attributes.token_prices['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2']);
+          setTokenPrices(
+            data.data.attributes.token_prices[
+              "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+            ]
+          );
         } else {
           throw new Error("Failed to fetch token prices");
         }
@@ -30,23 +41,24 @@ export const TokenList = () => {
 
   return (
     <Stack>
-      <HStack justify={"space-between"}>
-        <HStack>
-          <Avatar bg="teal.500" size={"sm"} name="Ethereum" />
+      <Skeleton isLoaded={balance?.balance && tokenPrices}>
+        <HStack justify={"space-between"}>
+          <HStack>
+            <Avatar bg="teal.500" size={"sm"} name="Ethereum" />
+            <Stack>
+              <Text>ETH</Text>
+              <Text>Ethereum</Text>
+            </Stack>
+          </HStack>
           <Stack>
-            <Text>ETH</Text>
-            <Text>Ethereum</Text>
+            <Text textAlign={"end"}>{balance?.balance?.toFixed(4)} ETH</Text>
+
+            <Text textAlign={"end"}>
+              ${(balance?.balance * tokenPrices).toFixed(2)} USD
+            </Text>
           </Stack>
         </HStack>
-        <Stack>
-          {balance && (
-            <Text textAlign={"end"}>{balance?.balance?.toFixed(4)} ETH</Text>
-          )}
-          {balance && tokenPrices && (
-            <Text textAlign={"end"}>${(balance?.balance * tokenPrices  ).toFixed(2)} USD</Text>
-          )}
-        </Stack>
-      </HStack>
+      </Skeleton>
     </Stack>
   );
 };
